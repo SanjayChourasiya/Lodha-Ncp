@@ -51,6 +51,27 @@
     );
   }
   
+  const unitPlans = [
+    {
+      label: "3 BHK",
+      carpetArea: "1162 sq.ft.",
+      price: "Price-₹4.67 Cr+",
+      cta: "Enquire Now"
+    },
+    {
+      label: "3 BHK + Study",
+      carpetArea: "1267 sq.ft.",
+      price: "",
+      cta: "Check Price"
+    },
+    {
+      label: "4 BHK",
+      carpetArea: "1768 sq.ft.",
+      price: "",
+      cta: "Check Price"
+    }
+  ];
+  
 
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
@@ -115,7 +136,7 @@
       const email = e.target.email.value;
       const number = e.target.number.value;
       // CRM submission
-      const crmUrl = `/api/v1/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(number)}`;
+      const crmUrl = `/.netlify/functions/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(number)}`;
 
       // Web3Forms setup
       const web3FormUrl = "https://api.web3forms.com/submit";
@@ -488,53 +509,44 @@
               Plans & Pricing
             </motion.h2>
             <div className="w-full h-px bg-[#e0dcca] my-8"></div>
-
-
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-              {[4, 5, 6].map((bhk, i) => (
-                <motion.div
-                  key={bhk}
-                  variants={cardVariants}
-                  whileHover={{ scale: 1.05, rotate: -1 }}
-                  className={`bg-white rounded-xl border border-[#e5decf] shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-transform duration-300 ${bhk === 5 ? "shadow-2xl scale-105" : ""
-                    }`}
-                >
-                  <motion.div
-                    className="w-full h-40 bg-cover bg-center rounded-md mb-4 flex items-center justify-center text-sm text-white cursor-pointer"
-                    style={{ backgroundImage: `url(${Blurimg})` }}
-                    whileHover={{ rotate: 1 }}
-                    onClick={() => setIsModalOpen(true)}
-                    transition={{ type: "spring", stiffness: 100 }}
-                  >
-                    Click to View Plan
-                  </motion.div>
+  {unitPlans.map((unit, index) => (
+    <motion.div
+      key={index}
+      variants={cardVariants}
+      whileHover={{ scale: 1.05, rotate: -1 }}
+      className="bg-white rounded-xl border border-[#e5decf] shadow-lg p-6 flex flex-col items-center hover:shadow-xl transition-transform duration-300"
+    >
+      <motion.div
+        className="w-full h-40 bg-cover bg-center rounded-md mb-4 flex items-center justify-center text-sm text-white cursor-pointer"
+        style={{ backgroundImage: `url(${Blurimg})` }}
+        whileHover={{ rotate: 1 }}
+        onClick={() => setIsModalOpen(true)}
+        transition={{ type: "spring", stiffness: 100 }}
+      >
+        Click to View Plan
+      </motion.div>
 
+      <h3 className="text-xl font-bold text-[#443d2d] mb-2">{unit.label}</h3>
 
-                  <h3 className="text-xl font-bold text-[#443d2d] mb-2">{bhk} BHK</h3>
+      <p className="text-center text-gray-600 text-sm mb-2">
+        Carpet Area – {unit.carpetArea}
+      </p>
 
-                  <p className="text-center text-gray-600 text-sm mb-4">
-                    {bhk === 4 &&
-                      "Experience comfort and style in our spacious 4BHK homes, perfect for modern family living."}
-                    {bhk === 5 &&
-                      "Indulge in luxury with our expansive 5BHK residences, crafted for those who seek elegance."}
-                    {bhk === 6 &&
-                      "Discover ultimate sophistication in our 6BHK homes, offering unparalleled luxury and privacy."}
-                  </p>
+      <p className="text-center text-gray-500 text-sm">{unit.price}</p>
 
-                  <motion.button
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setIsModalOpen(true)}
-                    whileHover={{ scale: 1.08 }}
-                    className="mt-auto bg-[#9C8856] hover:bg-[#b29b6a] text-white font-bold  py-2 px-4 rounded-lg 
-              border border-white animate-pulse transition-all duration-300"
-                  >
-                    ₹ Check Price
-                  </motion.button>
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsModalOpen(true)}
+        whileHover={{ scale: 1.08 }}
+        className="mt-auto bg-[#9C8856] hover:bg-[#b29b6a] text-white font-bold py-2 px-4 rounded-lg border border-white animate-pulse transition-all duration-300"
+      >
+        {unit.cta}
+      </motion.button>
+    </motion.div>
+  ))}
+</div>
 
-
-                </motion.div>
-              ))}
-            </div>
           </div>
         </motion.section>
 
@@ -549,7 +561,7 @@
           <div className="w-full h-px bg-[#e0dcca] mx-auto mt-4 mb-12"></div>
         </div> */}
 
-<section className="min-h-screen flex items-center justify-center bg-white px-6 py-10">
+<section className="min-h-screen flex items-center justify-center bg-white px-6 py-1">
   <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
     {/* Left Side Content */}
     <div className="order-2 md:order-1 text-center md:text-left">
