@@ -1,30 +1,45 @@
+const fetch = require("node-fetch");
+
 exports.handler = async (event) => {
+  try {
     const { name, email, phone } = event.queryStringParameters;
-  
-    // Your actual CRM API
-    const crmApiUrl = `/.netlify/functions/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(number)}`;
-    try {
-      const response = await fetch(crmApiUrl, {
-        method: "POST",
+
+    if (!name || !email || !phone) {
+      return {
+        statusCode: 400,
         headers: {
-          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': '*',
         },
-        body: JSON.stringify({ name, email, phone }),
-      });
-  
-      if (!response.ok) {
-        throw new Error("CRM responded with error");
-      }
-  
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ message: "Lead sent to CRM!" }),
-      };
-    } catch (error) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({ error: error.message }),
+        body: JSON.stringify({ error: "Missing name, email, or phone" }),
       };
     }
-  };
-  
+
+    // ✅ Updated CRM API endpoint
+    const crmApiUrl = `https://valueproperties.tranquilcrmone.in/v1/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+
+    const crmResponse = await fetch(crmApiUrl, {
+      method: "GET",
+    });
+
+    if (!crmResponse.ok) {
+      throw new Error("CRM responded with an error");
+    }
+
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({ message: "Lead sent to CRM successfully!" }),
+    };
+  } catch (error) {
+    console.error("CRM Error:", error.message);
+    return {
+      statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({ error: error.message }),
+    };
+  }
+};

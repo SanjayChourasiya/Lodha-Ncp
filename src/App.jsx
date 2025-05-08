@@ -137,10 +137,10 @@
       const email = e.target.email.value;
       const number = e.target.number.value;
     
-      // ✅ ORIGINAL FORMAT — GET request to Netlify Function
+      // ✅ Call your deployed Netlify function
       const crmUrl = `/.netlify/functions/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(number)}`;
     
-      // ✅ Web3Forms setup
+      // Web3Forms
       const web3FormUrl = "https://api.web3forms.com/submit";
       const web3FormData = {
         access_key: "ffa3b19f-1b1e-4b5b-8d2e-959885602cbb",
@@ -152,27 +152,15 @@
       };
     
       try {
-        // 👉 Send to Netlify Function (CRM)
-        const crmResponse = await fetch(crmUrl, {
-          method: "GET", // ✅ As per your original code
-        });
+        const crmResponse = await fetch(crmUrl, { method: "GET" });
+        if (!crmResponse.ok) throw new Error("CRM submission failed");
     
-        if (!crmResponse.ok) {
-          throw new Error("CRM submission failed");
-        }
-    
-        // 👉 Send to Web3Forms
         const web3Response = await fetch(web3FormUrl, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(web3FormData)
         });
-    
-        if (!web3Response.ok) {
-          throw new Error("Web3Forms submission failed");
-        }
+        if (!web3Response.ok) throw new Error("Web3Forms submission failed");
     
         toast.success("Form submitted successfully! ✅");
         e.target.reset();
