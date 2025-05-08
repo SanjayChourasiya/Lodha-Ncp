@@ -132,13 +132,15 @@
 
     const handleFormSubmit = async (e) => {
       e.preventDefault();
+    
       const name = e.target.name.value;
       const email = e.target.email.value;
       const number = e.target.number.value;
-      // CRM submission
+    
+      // ✅ ORIGINAL FORMAT — GET request to Netlify Function
       const crmUrl = `/.netlify/functions/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(number)}`;
-
-      // Web3Forms setup
+    
+      // ✅ Web3Forms setup
       const web3FormUrl = "https://api.web3forms.com/submit";
       const web3FormData = {
         access_key: "ffa3b19f-1b1e-4b5b-8d2e-959885602cbb",
@@ -148,16 +150,18 @@
         subject: "New Contact Form Submission",
         message: `Name: ${name}, Email: ${email}, Phone: ${number}`
       };
+    
       try {
-        // Send to CRM
+        // 👉 Send to Netlify Function (CRM)
         const crmResponse = await fetch(crmUrl, {
-          method: "GET",
+          method: "GET", // ✅ As per your original code
         });
-
+    
         if (!crmResponse.ok) {
           throw new Error("CRM submission failed");
         }
-        // Send to Web3Forms
+    
+        // 👉 Send to Web3Forms
         const web3Response = await fetch(web3FormUrl, {
           method: "POST",
           headers: {
@@ -165,17 +169,18 @@
           },
           body: JSON.stringify(web3FormData)
         });
-
+    
         if (!web3Response.ok) {
           throw new Error("Web3Forms submission failed");
         }
-
+    
         toast.success("Form submitted successfully! ✅");
         e.target.reset();
       } catch (error) {
         toast.error(`Error: ${error.message}`);
       }
     };
+    
     return (
       <div className="min-h-screen bg-gray-50 relative">
         {/* Modal */}
