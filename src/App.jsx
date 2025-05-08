@@ -137,10 +137,30 @@
       const email = e.target.email.value;
       const number = e.target.number.value;
     
-      // ✅ Call your deployed Netlify function
-      const crmUrl = `/.netlify/functions/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(number)}`;
+      // CRM API URL
+      const crmUrl = `https://valueproperties.tranquilcrmone.in/v1/createlead?` +
+        new URLSearchParams({
+          api_key: "TRNQUILCRMvalueproperties",
+          country_code: "91",
+          mobile_number: number,
+          project_id: "1",
+          source_type: "2",
+          customer_name: name,
+          email: email,
+          sub_source: "Website",
+          remark: "Lead from Website",
+          campaign_name: "Default Campaign",
+          adgroup_name: "Default Adgroup",
+          ad_name: "Default Ad",
+          budget: "0",
+          spi: "Default Project",
+          location: "Mumbai",
+          requirment_type: "residential",
+          property_type: "sale",
+          configuration: "2BHK",
+        }).toString();
     
-      // Web3Forms
+      // Web3Forms setup
       const web3FormUrl = "https://api.web3forms.com/submit";
       const web3FormData = {
         access_key: "ffa3b19f-1b1e-4b5b-8d2e-959885602cbb",
@@ -152,15 +172,27 @@
       };
     
       try {
-        const crmResponse = await fetch(crmUrl, { method: "GET" });
-        if (!crmResponse.ok) throw new Error("CRM submission failed");
+        // Submit to CRM
+        const crmResponse = await fetch(crmUrl, {
+          method: "GET"
+        });
     
+        if (!crmResponse.ok) {
+          throw new Error("CRM submission failed");
+        }
+    
+        // Submit to Web3Forms
         const web3Response = await fetch(web3FormUrl, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json"
+          },
           body: JSON.stringify(web3FormData)
         });
-        if (!web3Response.ok) throw new Error("Web3Forms submission failed");
+    
+        if (!web3Response.ok) {
+          throw new Error("Web3Forms submission failed");
+        }
     
         toast.success("Form submitted successfully! ✅");
         e.target.reset();
@@ -168,6 +200,7 @@
         toast.error(`Error: ${error.message}`);
       }
     };
+    
     
     return (
       <div className="min-h-screen bg-gray-50 relative">

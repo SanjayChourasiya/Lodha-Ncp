@@ -4,42 +4,41 @@ exports.handler = async (event) => {
   try {
     const { name, email, phone } = event.queryStringParameters;
 
-    if (!name || !email || !phone) {
-      return {
-        statusCode: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-        body: JSON.stringify({ error: "Missing name, email, or phone" }),
-      };
-    }
+    const crmUrl = `https://valueproperties.tranquilcrmone.in/v1/createlead?` +
+      new URLSearchParams({
+        api_key: "TRNQUILCRMvalueproperties",
+        country_code: "91",
+        mobile_number: phone,
+        project_id: "1",
+        source_type: "2",
+        customer_name: name,
+        email: email,
+        sub_source: "Website",
+        remark: "From Netlify",
+        campaign_name: "Netlify Campaign",
+        adgroup_name: "Netlify Group",
+        ad_name: "Netlify Ad",
+        spi: "Netlify SPI",
+        location: "Mumbai",
+        requirment_type: "residential",
+        property_type: "sale",
+        configuration: "2BHK"
+      }).toString();
 
-    // ✅ Updated CRM API endpoint
-    const crmApiUrl = `https://valueproperties.tranquilcrmone.in/v1/createlead?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
-
-    const crmResponse = await fetch(crmApiUrl, {
-      method: "GET",
+    const response = await fetch(crmUrl, {
+      method: "GET"
     });
 
-    if (!crmResponse.ok) {
-      throw new Error("CRM responded with an error");
-    }
+    const result = await response.json();
 
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({ message: "Lead sent to CRM successfully!" }),
+      body: JSON.stringify(result)
     };
   } catch (error) {
-    console.error("CRM Error:", error.message);
     return {
       statusCode: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ error: error.message })
     };
   }
 };
