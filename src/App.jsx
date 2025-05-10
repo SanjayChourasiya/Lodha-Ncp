@@ -16,7 +16,8 @@ import { useEffect } from 'react';
 import Hero from "../public/img/uplodha.png"
 import { ToastContainer, toast } from 'react-toastify';
 import CompareImage from "react-compare-image";
-
+import Day from "../public/img/afteroon.png"
+import Night from "../public/img/night.png"
 import beforimg from "../public/img/afteroon.png"
 
 import {
@@ -396,9 +397,9 @@ function App() {
         <div className="relative z-10 w-full flex flex-col items-center">
           {/* Headings */}
           <div className="w-full max-w-6xl px-4 sm:px-8 text-center text-white mb-12">
-<p className="text-yellow-400 text-sm tracking-widest uppercase hidden md:block">
-  Visual Comparison
-</p>
+            <p className="text-yellow-400 text-sm tracking-widest uppercase hidden md:block">
+              Visual Comparison
+            </p>
             <h1 className="text-4xl md:text-5xl font-bold font-serif my-4 hidden sm:block">
               See the Transformation
             </h1>
@@ -412,8 +413,8 @@ function App() {
               Visual Comparison
             </p>
             <CompareImage
-              leftImage="../public/img/afteroon.png"
-              rightImage="../public/img/night.png"
+              leftImage={Day}
+              rightImage={Night}
               sliderLineWidth={2}
               sliderLineColor="#ffffff"
               handle={
@@ -431,103 +432,103 @@ function App() {
       {/* Project Highlights - Visual Section */}
 
       <section
-  id="highlights"
-  className="scroll-mt-28 py-16 px-4 md:px-8 lg:px-24 bg-white"
->
-  <div className="max-w-screen-xl mx-auto">
-    <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center font-serif">
-      Project Highlights
-    </h2>
-
-    <div className="relative">
-      {/* Left Arrow */}
-      <button
-        onClick={() =>
-          document.getElementById("gallery").scrollBy({ left: -300, behavior: "smooth" })
-        }
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white text-[#9C8856] w-10 h-10 rounded-full shadow-lg border border-[#9C8856] hover:bg-[#9C8856] hover:text-white transition-all duration-300"
+        id="highlights"
+        className="scroll-mt-28 py-16 px-4 md:px-8 lg:px-24 bg-white"
       >
-        &lt;
-      </button>
+        <div className="max-w-screen-xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-center font-serif">
+            Project Highlights
+          </h2>
 
-      {/* Scrollable gallery */}
-      <div
-        id="gallery"
-        className="flex space-x-6 overflow-x-auto no-scrollbar px-12 scroll-smooth pb-4"
-      >
-        {/* Card 1 */}
-        <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
-          <img
-            src={down}
-            alt="Panoramic City View"
-            className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
-          />
-          <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
-            <p className="text-white text-lg font-semibold">Panoramic City View</p>
+          <div className="relative">
+            {/* Left Arrow */}
+            <button
+              onClick={() =>
+                document.getElementById("gallery").scrollBy({ left: -300, behavior: "smooth" })
+              }
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white text-[#9C8856] w-10 h-10 rounded-full shadow-lg border border-[#9C8856] hover:bg-[#9C8856] hover:text-white transition-all duration-300"
+            >
+              &lt;
+            </button>
+
+            {/* Scrollable gallery */}
+            <div
+              id="gallery"
+              className="flex space-x-6 overflow-x-auto no-scrollbar px-12 scroll-smooth pb-4"
+            >
+              {/* Card 1 */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
+                <img
+                  src={down}
+                  alt="Panoramic City View"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-lg font-semibold">Panoramic City View</p>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
+                <img
+                  src={PROJECT2}
+                  alt="Skyline Facing Balcony"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-lg font-semibold">Skyline Facing Balcony</p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
+                <img
+                  src={PROJECT3}
+                  alt="Luxury Terrace Lounge"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-lg font-semibold">Luxury Terrace Lounge</p>
+                </div>
+              </div>
+
+              {/* Duplicate Card 4 */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
+                <img
+                  src={PROJECT1}
+                  alt="Infinity Pool Retreat"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-lg font-semibold">Infinity Pool Retreat</p>
+                </div>
+              </div>
+
+              {/* Duplicate Card 5 */}
+              <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
+                <img
+                  src={down}
+                  alt="Panoramic City View"
+                  className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+                  <p className="text-white text-lg font-semibold">Panoramic City View</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() =>
+                document.getElementById("gallery").scrollBy({ left: 300, behavior: "smooth" })
+              }
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white text-[#9C8856] w-10 h-10 rounded-full shadow-lg border border-[#9C8856] hover:bg-[#9C8856] hover:text-white transition-all duration-300"
+            >
+              &gt;
+            </button>
           </div>
         </div>
-
-        {/* Card 2 */}
-        <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
-          <img
-            src={PROJECT2}
-            alt="Skyline Facing Balcony"
-            className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
-          />
-          <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
-            <p className="text-white text-lg font-semibold">Skyline Facing Balcony</p>
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
-          <img
-            src={PROJECT3}
-            alt="Luxury Terrace Lounge"
-            className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
-          />
-          <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
-            <p className="text-white text-lg font-semibold">Luxury Terrace Lounge</p>
-          </div>
-        </div>
-
-        {/* Duplicate Card 4 */}
-        <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
-          <img
-            src={PROJECT1}
-            alt="Infinity Pool Retreat"
-            className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
-          />
-          <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
-            <p className="text-white text-lg font-semibold">Infinity Pool Retreat</p>
-          </div>
-        </div>
-
-        {/* Duplicate Card 5 */}
-        <div className="group relative overflow-hidden rounded-2xl shadow-lg border border-[#e9e4d7] min-w-[260px] md:min-w-[300px] flex-shrink-0">
-          <img
-            src={down}
-            alt="Panoramic City View"
-            className="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500"
-          />
-          <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
-            <p className="text-white text-lg font-semibold">Panoramic City View</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Arrow */}
-      <button
-        onClick={() =>
-          document.getElementById("gallery").scrollBy({ left: 300, behavior: "smooth" })
-        }
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white text-[#9C8856] w-10 h-10 rounded-full shadow-lg border border-[#9C8856] hover:bg-[#9C8856] hover:text-white transition-all duration-300"
-      >
-        &gt;
-      </button>
-    </div>
-  </div>
-</section>
+      </section>
 
       <section className="min-fit  flex items-center justify-center bg-white px-6 py-12">
         <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -571,72 +572,72 @@ function App() {
 
 
       {/* Pricing Section */}
- <motion.section className="py-8 px-6 md:px-12 lg:px-20">
-  <div className="max-w-7xl mx-auto">
-    <h2 className="text-3xl font-bold text-center mb-6 text-[#9C8856] font-serif">
-      Area Pricing
-    </h2>
-    <div className="overflow-hidden">
+      <motion.section className="py-8 px-6 md:px-12 lg:px-20">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-6 text-[#9C8856] font-serif">
+            Area Pricing
+          </h2>
+          <div className="overflow-hidden">
 
-      {/* Desktop View: Table Layout (Borders around the table and content) */}
-      <div className="hidden md:block">
-        <table className="min-w-full bg-white table-auto border-2 border-[#9C8856]">
-          <thead className="bg-[#9C8856] text-white">
-            <tr>
-              <th className="px-4 py-3 text-left">Type</th>
-              <th className="px-4 py-3 text-left">Area</th>
-              <th className="px-4 py-3 text-left">Price (Onward)</th>
-              <th className="px-4 py-3 text-center">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {unitPlans.map((unit, index) => (
-              <tr key={index} className="even:bg-gray-50 border-t rounded border-[#9C8856]">
-                <td className="px-4 py-3 text-gray-700">{unit.type}</td>
-                <td className="px-4 py-3 text-gray-700">{unit.area}</td>
-                <td className="px-4 py-3 text-gray-700">{unit.price}</td>
-                <td className="px-4 py-3 text-center">
-                  <button className="bg-[#9C8856] text-white px-4 py-2 rounded-md hover:bg-[#b29b6a]">
-                    Complete Costing Details
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            {/* Desktop View: Table Layout (Borders around the table and content) */}
+            <div className="hidden md:block">
+              <table className="min-w-full bg-white table-auto border-2 border-[#9C8856]">
+                <thead className="bg-[#9C8856] text-white">
+                  <tr>
+                    <th className="px-4 py-3 text-left">Type</th>
+                    <th className="px-4 py-3 text-left">Area</th>
+                    <th className="px-4 py-3 text-left">Price (Onward)</th>
+                    <th className="px-4 py-3 text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {unitPlans.map((unit, index) => (
+                    <tr key={index} className="even:bg-gray-50 border-t rounded border-[#9C8856]">
+                      <td className="px-4 py-3 text-gray-700">{unit.type}</td>
+                      <td className="px-4 py-3 text-gray-700">{unit.area}</td>
+                      <td className="px-4 py-3 text-gray-700">{unit.price}</td>
+                      <td className="px-4 py-3 text-center">
+                        <button className="bg-[#9C8856] text-white px-4 py-2 rounded-md hover:bg-[#b29b6a]">
+                          Complete Costing Details
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-      {/* Mobile View: Card Layout with Borders only on Cards */}
-      <div className="md:hidden">
-        {unitPlans.map((unit, index) => (
-          <div
-            key={index}
-            className="flex flex-col bg-white rounded-2xl mb-6 p-4 shadow-md border-2 border-[#9C8856]"
-          >
-            <div className="flex justify-between">
-              <span className="text-gray-700 font-semibold">Type:</span>
-              <span className="text-gray-700">{unit.type}</span>
+            {/* Mobile View: Card Layout with Borders only on Cards */}
+            <div className="md:hidden">
+              {unitPlans.map((unit, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col bg-white rounded-2xl mb-6 p-4 shadow-md border-2 border-[#9C8856]"
+                >
+                  <div className="flex justify-between">
+                    <span className="text-gray-700 font-semibold">Type:</span>
+                    <span className="text-gray-700">{unit.type}</span>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="text-gray-700 font-semibold">Area:</span>
+                    <span className="text-gray-700">{unit.area}</span>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="text-gray-700 font-semibold">Price (Onward):</span>
+                    <span className="text-gray-700">{unit.price}</span>
+                  </div>
+                  <div className="mt-4 text-center">
+                    <button className="bg-[#9C8856] text-white px-4 py-2 rounded-md hover:bg-[#b29b6a]">
+                      Complete Costing Details
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="flex justify-between mt-2">
-              <span className="text-gray-700 font-semibold">Area:</span>
-              <span className="text-gray-700">{unit.area}</span>
-            </div>
-            <div className="flex justify-between mt-2">
-              <span className="text-gray-700 font-semibold">Price (Onward):</span>
-              <span className="text-gray-700">{unit.price}</span>
-            </div>
-            <div className="mt-4 text-center">
-              <button className="bg-[#9C8856] text-white px-4 py-2 rounded-md hover:bg-[#b29b6a]">
-                Complete Costing Details
-              </button>
-            </div>
+
           </div>
-        ))}
-      </div>
-
-    </div>
-  </div>
-</motion.section>
+        </div>
+      </motion.section>
 
       <section className="py-6 px-4 sm:px-6 md:px-16">
         <h1 className="text-xl sm:text-3xl md:text-2xl lg:text-2xl font-serif font-bold text-gray-900 leading-tight tracking-tight mb-6 md:px-12">
