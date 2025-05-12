@@ -1043,7 +1043,7 @@ function App() {
             className="md:w-1/3 md:border-r md:border-gray-700 md:pr-6 text-sm text-gray-400"
           >
             <h3 className="text-white font-semibold mb-3">Project Address</h3>
-            <p>lodha New Cuffe Parade, off Eastern Freeway, near Wadala Truck Terminal, Wadala East, Sion, Mumbai, Maharashtra 400037</p>
+            <p>ATLANTIS ONE  TEJPAL ROAD, MUMBA Mumbai, Maharashtra 400037</p>
           </motion.div>
 
           {/* Contact and RERA Info */}
