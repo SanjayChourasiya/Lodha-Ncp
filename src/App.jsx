@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import logo from '../public/img/lodhalogo.png';
+import logo from '../public/img/altlogo.png';
 import About from "../public/img/newabout.jpg"
 import About1 from "../public/img/aboutus.jpg"
-import down from "/down.png";
+import down from "../public/img/ncphero.png";
 import Choose from "../public/img/g.png"
 import Bill from "../public/img/bill.png"
 import PROJECT1 from "../public/img/pimg1.png"
@@ -16,7 +16,7 @@ import { useEffect } from 'react';
 import Hero from "../public/img/uplodha.png"
 import { ToastContainer, toast } from 'react-toastify';
 import CompareImage from "react-compare-image";
-import Day from "../public/img/afteroon.png"
+import Day from "../public/img/ncphero.png"
 import Night from "../public/img/night.png"
 import beforimg from "../public/img/afteroon.png"
 
@@ -29,22 +29,40 @@ import {
   FaTrain,
   FaHorse
 } from "react-icons/fa";
-import { FaSwimmingPool, FaDumbbell, FaGlassCheers, FaParking, FaShieldAlt, FaChild, FaSpa, FaWifi, FaBicycle, FaTree } from "react-icons/fa";
+// import { FaSwimmingPool, FaDumbbell, FaGlassCheers, FaParking, FaShieldAlt, FaChild, FaSpa, FaWifi, FaBicycle, FaTree } from "react-icons/fa";
 
 import QR from '../public/img/qr.png'
 
+import { FaSwimmingPool, FaDumbbell, FaGlassCheers, FaParking, FaShieldAlt, FaChild, FaSpa, FaWifi, FaBicycle, FaTree, FaCity, FaBuilding, FaPlug, FaCashRegister, FaCreditCard, FaUtensils } from "react-icons/fa";
+
 const amenities = [
-  { name: "Swimming Pool", icon: <FaSwimmingPool size={28} className="text-[#9C8856]" /> },
-  { name: "Gymnasium", icon: <FaDumbbell size={28} className="text-[#9C8856]" /> },
-  { name: "Clubhouse", icon: <FaGlassCheers size={28} className="text-[#9C8856]" /> },
+
+  { name: "Pool", icon: <FaSwimmingPool size={28} className="text-[#9C8856]" /> },
+  { name: "Gym", icon: <FaDumbbell size={28} className="text-[#9C8856]" /> },
+  { name: "Club", icon: <FaGlassCheers size={28} className="text-[#9C8856]" /> },
   { name: "Parking", icon: <FaParking size={28} className="text-[#9C8856]" /> },
-  { name: "24x7 Security", icon: <FaShieldAlt size={28} className="text-[#9C8856]" /> },
-  { name: "Kids Play Area", icon: <FaChild size={28} className="text-[#9C8856]" /> },
-  { name: "Spa & Wellness", icon: <FaSpa size={28} className="text-[#9C8856]" /> },
-  { name: "High-Speed Internet", icon: <FaWifi size={28} className="text-[#9C8856]" /> },
-  { name: "Cycling Track", icon: <FaBicycle size={28} className="text-[#9C8856]" /> },
-  { name: "Green Park", icon: <FaTree size={28} className="text-[#9C8856]" /> },
+  { name: "Security", icon: <FaShieldAlt size={28} className="text-[#9C8856]" /> },
+  { name: "Kids Zone", icon: <FaChild size={28} className="text-[#9C8856]" /> },
+  { name: "Spa", icon: <FaSpa size={28} className="text-[#9C8856]" /> },
+  { name: "Wi-Fi", icon: <FaWifi size={28} className="text-[#9C8856]" /> },
+  { name: "Cycle Track", icon: <FaBicycle size={28} className="text-[#9C8856]" /> },
+  { name: "Park", icon: <FaTree size={28} className="text-[#9C8856]" /> },
+  { name: "Smart Home", icon: <FaCity size={28} className="text-[#9C8856]" /> },
+  { name: "High Ceilings", icon: <FaBuilding size={28} className="text-[#9C8856]" /> },
+  { name: "View", icon: <FaCity size={28} className="text-[#9C8856]" /> },
+  { name: "Reserved Park", icon: <FaParking size={28} className="text-[#9C8856]" /> },
+  { name: "Power", icon: <FaPlug size={28} className="text-[#9C8856]" /> },
+  { name: "Sanitary", icon: <FaPlug size={28} className="text-[#9C8856]" /> },
+  { name: "Concealed Work", icon: <FaBuilding size={28} className="text-[#9C8856]" /> },
+  { name: "Kitchen Top", icon: <FaUtensils size={28} className="text-[#9C8856]" /> },
+  { name: "Help Desk", icon: <FaShieldAlt size={28} className="text-[#9C8856]" /> },
+  { name: "Reception", icon: <FaCreditCard size={28} className="text-[#9C8856]" /> },
+  { name: "Market", icon: <FaCashRegister size={28} className="text-[#9C8856]" /> },
+  { name: "Food & Shop", icon: <FaUtensils size={28} className="text-[#9C8856]" /> },
+  { name: "ATM", icon: <FaCreditCard size={28} className="text-[#9C8856]" /> },
 ];
+
+
 function LocationCard({ icon, title, subtitle }) {
   return (
     <div className="bg-white/10 border border-white/20 p-4 rounded-xl shadow-lg backdrop-blur-md hover:bg-white/20 transition duration-300">
@@ -60,52 +78,133 @@ function LocationCard({ icon, title, subtitle }) {
 }
 
 const unitPlans = [
-  { type: "3 BHK", area: "1162 sq.ft", price: "₹ 4.67 Cr*" },
-  { type: "3.5 BHK", area: "1267 sq.ft", price: "₹ 5.25 Cr*" },
-  { type: "4 BHK", area: "1768 sq.ft", price: "₹ 7.07 Cr*" },
-  { type: "Penthouse", area: "3000 - 4000 Sq.ft", price: "On Request" }
+  { type: "3 BHK", area: "1789 sq.ft", price: "₹ 17.50 Cr*" },
+  { type: "3 BHK", area: "1789 sq.ft", price: "₹ 19.50 Cr*" },
+  { type: "4 BHK", area: "2562 sq.ft", price: "On Request" },
+  { type: "Penthouse", area: "3000 - 4000 sq.ft", price: "On Request" }
 ];
 const locations = [
   {
-    category: "Schools",
+    category: "Project",
+    icon: <FaBuilding />,
+    details: [
+      {
+        name: "Atlantis One",
+        distance: "0.0 KM",
+        description: "Luxury residential project on Tejpal Road, Gamdevi, South Mumbai"
+      }
+    ]
+  },
+  {
+    category: "Schools & Colleges",
     icon: <FaSchool />,
     details: [
-      { name: "Finland International School", distance: "0.93 KM", description: "International curriculum" }
+      { name: "St. Columba School", distance: "", description: "Well-known local school" },
+      { name: "Queen Mary School", distance: "", description: "Renowned girls’ school" },
+      { name: "Bright Start Fellowship International School", distance: "", description: "International curriculum" },
+      { name: "Bombay International School", distance: "", description: "Progressive learning environment" },
+      { name: "Edubridge International School", distance: "", description: "IB World School" },
+      { name: "J.D. Bharda High School", distance: "", description: "Established institution" },
+      { name: "The Universal School, Tardeo", distance: "", description: "Modern education approach" },
+      {
+        name: "BM Ruia Girls College",
+        distance: "",
+        description: "Affiliated with SNDT Women's University"
+      }
     ]
   },
   {
-    category: "Hospitals",
+    category: "Hospitals & Clinics",
     icon: <FaHospital />,
     details: [
-      { name: "Wockhardt Hospitals", distance: "0.57 KM", description: "Multi-speciality" }
+      { name: "Cods Clinic", distance: "", description: "Outpatient specialist clinic" },
+      { name: "Dolby Hospital", distance: "", description: "General medical services" },
+      { name: "Dr. Gala's Nursing Home", distance: "", description: "Maternity & general healthcare" },
+      { name: "Dr. Nisar's Eye Care Centre", distance: "", description: "Specialized eye treatment" },
+      { name: "Foresight Eye Center", distance: "", description: "Comprehensive eye care services" },
+      {
+        name: "Dalvi Hospital",
+        distance: "",
+        description: "Located on NS Patkar Marg, general surgery facility"
+      }
     ]
   },
   {
-    category: "Colleges",
-    icon: <FaUniversity />,
-    details: [
-      { name: "Lala Lajpat Rai College", distance: "0.69 KM", description: "Commerce institute" }
-    ]
-  },
-  {
-    category: "Worship Places",
+    category: "Places of Worship",
     icon: <FaPlaceOfWorship />,
     details: [
-      { name: "Mahalakshmi Temple", distance: "1.28 KM", description: "Spiritual site" }
+      {
+        name: "Babulnath Temple",
+        distance: "",
+        description: "Historic Shiva temple and landmark"
+      },
+      {
+        name: "Gamdevi Temple",
+        distance: "",
+        description: "Dedicated to the goddess Gaondevi"
+      },
+      {
+        name: "Arya Samaj Mandir",
+        distance: "",
+        description: "Located in Kakadwadi, Girgaon"
+      },
+      {
+        name: "Vitthal Mandir",
+        distance: "",
+        description: "Located in Mangal Wadi, Girgaon"
+      }
     ]
   },
   {
     category: "Roads & Highways",
     icon: <FaRoad />,
     details: [
-      { name: "Eastern Express Highway", distance: "3.3 KM", description: "City-wide access" }
+      {
+        name: "NS Patkar Marg (Hughes Road)",
+        distance: "",
+        description: "Major arterial road in South Mumbai"
+      },
+      {
+        name: "Sardar Vallabhbhai Patel Road (SVP Road)",
+        distance: "",
+        description: "Connects multiple city areas"
+      },
+      {
+        name: "Grant Road",
+        distance: "",
+        description: "Key route with good connectivity"
+      },
+      {
+        name: "Western Express Highway",
+        distance: "3.3 KM",
+        description: "Primary north-south Mumbai artery"
+      }
     ]
   },
   {
     category: "Railway Stations",
     icon: <FaTrain />,
     details: [
-      { name: "Mahalaxmi Railway Station", distance: "1.0 KM", description: "Rail connectivity" }
+      {
+        name: "Grant Road Station",
+        distance: "1.0 KM",
+        description: "Western line local train access"
+      },
+      {
+        name: "Charni Road Station",
+        distance: "",
+        description: "Nearby station on the Western Line"
+      },
+      {
+        name: "Marine Lines Station",
+        distance: "",
+        description: "Serves the Western Line"
+      },
+      {
+        name: "Mumbai Central Station",
+        distance: "",
+        description: "Major hub for local and long-distance trains"
+      }
     ]
   }
 ];
@@ -389,29 +488,48 @@ function App() {
 
 
       {/* Spacer for Fixed Navbar */}
-      <section className="relative w-full h-auto bg-black py-16">
-        {/* Optional Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/70 z-0" />
+      <section className="relative w-full h-auto bg-black py-28 text-white">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/80 z-0" />
 
-        {/* Content */}
-        <div className="relative z-10 w-full flex flex-col items-center">
-          {/* Headings */}
-          <div className="w-full max-w-6xl px-4 sm:px-8 text-center text-white mb-12">
-            <p className="text-yellow-400 text-sm tracking-widest uppercase hidden md:block">
-              Visual Comparison
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-12">
+
+          {/* LEFT SIDE: Promo Text */}
+          <div className="flex-1 space-y-6">
+            <p className="text-white animate-pulse text-sm font-semibold uppercase">
+              0% Stamp Duty Offer <span className='text-yellow-400'>LIVE Now!</span>
             </p>
-            <h1 className="text-4xl md:text-5xl font-bold font-serif my-4 hidden sm:block">
-              See the Transformation
+            <h1 className="text-4xl md:text-5xl font-bold font-serif text-yellow-400">
+              ATLANTIS ONE
             </h1>
-
-            <p className="text-lg max-w-2xl mx-auto hidden sm:block">Drag the slider below to explore the stunning difference between before and after views.</p>
-          </div>
-          {/* <p className="text-yellow-400 text-sm tracking-widest uppercase  hidden md:lg-block">Visual Comparison</p> */}
-          {/* Responsive Slider */}
-          <div className="relative w-full max-w-6xl h-[400px] sm:h-[500px] md:h-[600px] rounded overflow-hidden shadow-2xl">
-            <p className="text-yellow-400 text-sm tracking-widest uppercase flex justify-center md:hidden py-4">
-              Visual Comparison
+            <p className="text-yellow-300 text-base sm:text-lg font-medium">
+              3, 4.5 & 5 BHK Luxury Homes – ₹17.50 Cr* Onwards
             </p>
+
+            <ul className="text-white text-base space-y-2 list-disc list-inside leading-relaxed">
+              <li>Located near Worli Sea Link</li>
+              <li>Half-acre premium development</li>
+              <li>Ultra-low density – only 2 residences per floor</li>
+              <li>13 ft clear floor-to-ceiling height</li>
+
+              <li>G+27 storey iconic tower</li>
+              <li>Lifetime panoramic views</li>
+              <li>3-tier amenity zones across levels</li>
+              <li>Builder-finished luxury apartments</li>
+              <li>2 minutes from Sea Link entry point</li>
+              {/* <li>Handover: Internal – Dec 2026 | RERA – July 2028</li> */}
+            </ul>
+
+            <button 
+             onClick={() => setIsModalOpen(true)}
+            className=" animate-pulse mt-4 px-6 py-3 bg-[#9C8856] text-white font-semibold rounded-full shadow-lg hover:bg-yellow-300 transition duration-300">
+              Schedule a Visit
+            </button>
+          </div>
+
+          {/* RIGHT SIDE: Image Slider */}
+          <div className="flex-1 w-full h-[400px] sm:h-[500px] md:h-[600px] rounded overflow-hidden shadow-2xl">
             <CompareImage
               leftImage={Day}
               rightImage={Night}
@@ -424,6 +542,7 @@ function App() {
           </div>
         </div>
       </section>
+
 
 
 
@@ -538,20 +657,19 @@ function App() {
               <span className="border-b-4 border-[#D1A83C]">Elevated Coastal Living</span>
             </h1>
             <p className="text-lg text-gray-700 max-w-xl mb-8">
-              Discover Elevated Coastal Living at Worli’s Premier Address. Presenting Godrej Worli—a forthcoming ultra-luxury icon set to transform Mumbai’s skyline. Located in the vibrant heart of Worli, this exclusive enclave features sprawling 3, 4 & 5 BHK residences with sweeping Arabian Sea views, tailored for those with a taste for the extraordinary.
-            </p>
+              Discover a new pinnacle of luxury at Atlantis One, Worli’s most prestigious address. This upcoming ultra-luxury icon is poised to reshape Mumbai’s skyline with spacious 3, 4 & 5 BHK sea-facing residences. Nestled in the vibrant heart of Worli, Atlantis One is crafted for those who seek nothing but the extraordinary.           </p>
 
             <div className="grid grid-cols-2 md:grid-cols-2 gap-8 mb-8">
               <div className="text-[#9C8856] text-2xl font-bold">5 Acres
                 <p className="text-sm text-gray-600">Land Parcel</p>
               </div>
-              <div className="text-[#9C8856] text-2xl font-bold">45+
+              <div className="text-[#9C8856] text-2xl font-bold">20+
                 <p className="text-sm text-gray-600">Lifestyle Amenities</p>
               </div>
-              <div className="text-[#9C8856] text-2xl font-bold">50 Storey
+              <div className="text-[#9C8856] text-2xl font-bold">27 Storey
                 <p className="text-sm text-gray-600">Tall Tower</p>
               </div>
-              <div className="text-[#9C8856] text-2xl font-bold">Dec' 2028
+              <div className="text-[#9C8856] text-2xl font-bold">Dec' 2026
                 <p className="text-sm text-gray-600">Possession Date</p>
               </div>
             </div>
@@ -641,7 +759,7 @@ function App() {
 
       <section className="py-6 px-4 sm:px-6 md:px-16">
         <h1 className="text-xl sm:text-3xl md:text-2xl lg:text-2xl font-serif font-bold text-gray-900 leading-tight tracking-tight mb-6 md:px-12">
-          Lodha Lumis
+          Atlantis  One
           <span className="text-[#9C8856]"> | Premium Lifestyle</span>
         </h1>
 
@@ -747,14 +865,14 @@ function App() {
               </div>
 
               {/* Amenity Rows */}
-              {[0, 4].map((startIndex, i) => (
+              {[0, 10].map((startIndex, i) => (
                 <div key={i} className="min-h-[180px] sm:min-h-[160px] py-2">
                   <div
                     id={`carousel-${i}`}
                     className="overflow-x-auto no-scrollbar scroll-smooth px-4 sm:px-10"
                   >
                     <div className="flex gap-4 sm:gap-6 p-2 w-max">
-                      {amenities.slice(startIndex, startIndex + 4).map((item, index) => (
+                      {amenities.slice(startIndex, startIndex + 10).map((item, index) => (
                         <div
                           key={index}
                           className="min-w-[160px] sm:min-w-[200px] flex flex-col items-center justify-center px-6 py-6 sm:px-8 sm:py-8 rounded-2xl shadow-md hover:shadow-xl transition bg-white"
@@ -790,7 +908,8 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Location Lodha <span className='text-[#B49D6B]'>Lumis</span>
+          Location   Atlantis
+          <span className='text-[#B49D6B]'> One</span>
 
         </motion.h2>
 
